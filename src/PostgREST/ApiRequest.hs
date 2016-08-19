@@ -179,7 +179,7 @@ userApiRequest schema req reqBody =
   hasPrefer val   = any (\(h,v) -> h == "Prefer" && val `elem` split v) hdrs
     where
         split :: BS.ByteString -> [T.Text]
-        split = map T.strip . T.split (==';') . cs
+        split = map T.strip . T.split (==',') . cs
   singular        = hasPrefer "plurality=singular"
   representation
     | hasPrefer "return=representation" = Full
